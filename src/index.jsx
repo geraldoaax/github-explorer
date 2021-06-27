@@ -1,8 +1,6 @@
-import React from 'react';
+
+import { render } from 'react-dom';
 import { App } from './App';
 
 
-function Wrapper() {
-  return <h1>Helllo World</h1>
-}
-
+render(<App />, document.getElementById('root'))
