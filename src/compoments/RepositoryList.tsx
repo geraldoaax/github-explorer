@@ -3,6 +3,8 @@ import { RepositoryItem } from "./RepositoryItem";
 
 import '../styles/repositories.scss';
 
+
+
 //https://api.github.com/orgs/rocketseat/repos
 
 // const repository = { //propriedades
@@ -11,10 +13,19 @@ import '../styles/repositories.scss';
 //   link: 'https://unform.com/'
 // }
 
+interface Repository {
+  name: string;
+  description: string;
+  html_url: string;
+
+}
+
 export function RepositoryList() {
-  const [repositories, setRepositories] = useState([]); //estado armazena listagem de repositorios //inicia com valor vazio (mesmo tipo)
+  const [repositories, setRepositories] = useState<Repository[]>([]); //estado armazena listagem de repositorios //inicia com valor vazio (mesmo tipo)
 
   //useEfect -> Dispara uma função quando algo acontece
+
+  
 
   useEffect(() => {
     fetch("https://api.github.com/orgs/rocketseat/repos")
@@ -31,7 +42,7 @@ export function RepositoryList() {
         {repositories.map(repository => {
           return <RepositoryItem key={repository.name} repository={repository} /> //utilizar no primeiro item a propriedadew key
         })}
-      </ul>
+      </ul> 
 
     </section>
   );
